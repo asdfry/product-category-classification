@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+    streamlit:
+        image: asdfry/hanme-streamlit:3.9-slim
+        tty: true
+        build:
+            context: .
+            dockerfile: ./streamlit
+        container_name: hanme-streamlit
+        volumes:
+            - ./streamlit:/app
+        ports:
+            - "8501:8501"
+
+    fastapi:
+        image: asdfry/hanme-fastapi:3.9-slim
+        tty: true
+        build:
+            context: .
+            dockerfile: ./fastapi
+        container_name: hanme-fastapi
+        volumes:
+            - ./fastapi:/app
+        ports:
+            - "8502:8502"
